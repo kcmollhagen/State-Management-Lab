@@ -23,6 +23,16 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                    @if (Session["Name"] != null)
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Register", "Register", "Home")</li>
+                    }
+
                 </ul>
             </div>
         </div>
@@ -32,6 +42,14 @@
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            @if (Session["Name"] != null)
+            {
+                <li>Hello There, @Session["Name"]</li>
+            }
+            else
+            {
+                <li>No user is logged in</li>
+            }
         </footer>
     </div>
 
